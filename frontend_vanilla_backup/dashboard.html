@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Operations Dashboard | Financial Loan Management System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <!-- Chart.js for Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Sticky Header Navigation -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">₹</div>
+      <span>FinLoan Pro</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="loan-application.html" class="nav-link">Loan Application</a></li>
+        <li><a href="dashboard.html" class="nav-link active">Financial Dashboard</a></li>
+        <li><a href="index.html#sql-practice" class="nav-link">SQL Practice</a></li>
+        <li><a href="index.html#assessment" class="nav-link">Assessment</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-container">
+
+    <div class="page-header" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <h1 class="page-title">Executive Financial Dashboard</h1>
+        <p class="page-subtitle">Real-time portfolio analytics, credit disbursements, risk exposure, and collection metrics.</p>
+      </div>
+      <div>
+        <a href="loan-application.html" class="btn btn-primary">+ New Loan Application</a>
+      </div>
+    </div>
+
+    <!-- 1. Top-Line KPI Metric Cards Grid -->
+    <section class="metrics-grid">
+
+      <!-- Card 1: Total Customers -->
+      <div class="card metric-card metric-blue">
+        <div class="metric-header">
+          <span>Total Borrowers</span>
+          <div class="metric-icon">👥</div>
+        </div>
+        <div id="totalCustomers" class="metric-number">--</div>
+        <div class="metric-footer">
+          <span id="activeLoansBadge" class="badge badge-submitted">-- Active Loans</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Total Disbursed Capital -->
+      <div class="card metric-card metric-green">
+        <div class="metric-header">
+          <span>Total Disbursed</span>
+          <div class="metric-icon">💰</div>
+        </div>
+        <div id="totalDisbursed" class="metric-number">₹--</div>
+        <div class="metric-footer">
+          <span id="approvalRateBadge" class="badge badge-approved">-- Approval Rate</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Outstanding Principal -->
+      <div class="card metric-card metric-purple">
+        <div class="metric-header">
+          <span>Outstanding Principal</span>
+          <div class="metric-icon">📉</div>
+        </div>
+        <div id="outstandingPrincipal" class="metric-number">₹--</div>
+        <div class="metric-footer">
+          <span>Active balance minus repaid principal</span>
+        </div>
+      </div>
+
+      <!-- Card 4: Overdue EMI Capital At Risk -->
+      <div class="card metric-card metric-amber">
+        <div class="metric-header">
+          <span>Overdue EMI Risk</span>
+          <div class="metric-icon">⚠️</div>
+        </div>
+        <div id="overdueAmount" class="metric-number" style="color:var(--danger-color);">₹--</div>
+        <div class="metric-footer">
+          <span id="overdueCountBadge" class="badge badge-rejected">-- Overdue Installments</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 2. Interactive Charts Grid (2x2 Layout) -->
+    <section class="charts-grid">
+
+      <!-- Chart 1: Monthly Collections -->
+      <div class="card chart-card">
+        <div class="chart-title-box">
+          <h2 class="chart-title">Monthly Repayment Collections</h2>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Historical Cashflow</span>
+        </div>
+        <div class="chart-container">
+          <canvas id="monthlyCollectionsCanvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Chart 2: Branch-wise Loan Distribution -->
+      <div class="card chart-card">
+        <div class="chart-title-box">
+          <h2 class="chart-title">Branch-wise Loan Disbursement</h2>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Geographical Volume</span>
+        </div>
+        <div class="chart-container">
+          <canvas id="branchDistributionCanvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Chart 3: Loan Status Breakdown -->
+      <div class="card chart-card">
+        <div class="chart-title-box">
+          <h2 class="chart-title">Loan Portfolio Status</h2>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Active vs Closed vs Defaulted</span>
+        </div>
+        <div class="chart-container">
+          <canvas id="loanStatusCanvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Chart 4: Portfolio Mix by Loan Product -->
+      <div class="card chart-card">
+        <div class="chart-title-box">
+          <h2 class="chart-title">Product Portfolio Mix</h2>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Capital by Loan Type</span>
+        </div>
+        <div class="chart-container">
+          <canvas id="portfolioMixCanvas"></canvas>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 3. Dual Activity Tables (Recent Transactions & Applications) -->
+    <section class="activity-grid">
+
+      <!-- Table 1: Recent Repayments -->
+      <div class="card">
+        <div class="activity-header">
+          <h2 class="activity-title">Recent Repayment Transactions</h2>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Live Ingestion</span>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Amount</th>
+                <th>Method</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="recentTransactionsBody">
+              <tr>
+                <td colspan="5" style="text-align:center; padding:1.5rem; color:var(--text-muted);">Loading transactions...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Table 2: Recent Applications -->
+      <div class="card">
+        <div class="activity-header">
+          <h2 class="activity-title">Recent Loan Applications</h2>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Underwriting Pipeline</span>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Applicant</th>
+                <th>Requested</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="recentApplicationsBody">
+              <tr>
+                <td colspan="4" style="text-align:center; padding:1.5rem; color:var(--text-muted);">Loading applications...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Financial Loan Management System &bull; AIWIZE 7-Day SQL + UI/UX Technical Curriculum</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/emi-calculator.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
+

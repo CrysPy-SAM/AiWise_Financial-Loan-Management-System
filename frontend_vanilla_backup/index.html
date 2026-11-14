@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Loan Management System | AIWIZE Curriculum</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .hero-banner {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #1e3a8a 100%);
+      color: #ffffff;
+      padding: 3.5rem 2rem;
+      border-radius: var(--radius-lg);
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-lg);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      max-width: 760px;
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+    }
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    @media (max-width: 900px) {
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .portal-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all var(--transition-normal);
+      border-top: 4px solid var(--border-color);
+    }
+    .portal-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .portal-card.card-blue { border-top-color: var(--brand-blue); }
+    .portal-card.card-green { border-top-color: var(--success-color); }
+    .portal-card.card-purple { border-top-color: #8b5cf6; }
+    .portal-card.card-amber { border-top-color: var(--warning-color); }
+    .portal-card.card-rose { border-top-color: #f43f5e; }
+    .portal-card.card-teal { border-top-color: #0d9488; }
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .card-heading {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">₹</div>
+      <span>FinLoan Pro</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="loan-application.html" class="nav-link">Loan Application</a></li>
+        <li><a href="dashboard.html" class="nav-link">Financial Dashboard</a></li>
+        <li><a href="#sql-practice" class="nav-link">SQL Practice</a></li>
+        <li><a href="#assessment" class="nav-link">Assessment</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-container">
+
+    <!-- Hero Section -->
+    <div class="hero-banner">
+      <div class="hero-tag">AIWIZE LABS &bull; 7-Day Technical Mastery</div>
+      <h1 class="hero-title">Financial Loan Management System</h1>
+      <p class="hero-subtitle">
+        A full-stack banking platform built on Neon Cloud PostgreSQL, Node.js + Express, and pure Vanilla JavaScript.
+        Designed for production understanding, SQL fluency, UI/UX craft, and independent technical defense without AI.
+      </p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="loan-application.html" class="btn btn-primary" style="background:#ffffff; color:var(--primary-color);">Open Loan Form &rarr;</a>
+        <a href="dashboard.html" class="btn btn-secondary" style="background:transparent; color:#ffffff; border-color:rgba(255,255,255,0.4);">Launch Dashboard &rarr;</a>
+      </div>
+    </div>
+
+    <!-- System Modules Portal Grid -->
+    <div class="portal-grid">
+
+      <!-- Module 1: Loan Application Form -->
+      <div class="card portal-card card-blue">
+        <div>
+          <div class="card-icon">📝</div>
+          <h2 class="card-heading">Loan Application Form</h2>
+          <p class="card-desc">
+            Interactive application form featuring live PAN regex validation, loan product selection, bidirectional range sliders, dynamic conditional fields, and real-time reducing balance EMI calculations.
+          </p>
+        </div>
+        <a href="loan-application.html" class="btn btn-primary">Launch Form &rarr;</a>
+      </div>
+
+      <!-- Module 2: Financial Operations Dashboard -->
+      <div class="card portal-card card-green">
+        <div>
+          <div class="card-icon">📊</div>
+          <h2 class="card-heading">Executive Dashboard</h2>
+          <p class="card-desc">
+            Visual analytics powered by Chart.js displaying monthly repayment collections, branch loan volumes, active portfolio statuses, real-time KPI cards, and live database feeds.
+          </p>
+        </div>
+        <a href="dashboard.html" class="btn btn-primary" style="background:var(--success-color);">View Dashboard &rarr;</a>
+      </div>
+
+      <!-- Module 3: SQL Practice Matrix -->
+      <div id="sql-practice" class="card portal-card card-purple">
+        <div>
+          <div class="card-icon">🗄️</div>
+          <h2 class="card-heading">SQL Practice (40+ Queries)</h2>
+          <p class="card-desc">
+            Structured into 3 progressive tiers: Foundation (15), Advanced CTEs & Subqueries (15), and Deep Reasoning with Window Functions & EXPLAIN ANALYZE (10). Every query includes all 10 required analysis facets.
+          </p>
+        </div>
+        <a href="../sql-practice/level-1-foundation.sql" class="btn btn-secondary">Explore SQL Modules &rarr;</a>
+      </div>
+
+      <!-- Module 4: SQL Debugging Exercises -->
+      <div class="card portal-card card-amber">
+        <div>
+          <div class="card-icon">🐛</div>
+          <h2 class="card-heading">SQL Debugging (15 Broken Queries)</h2>
+          <p class="card-desc">
+            15 intentionally broken queries modeling real production bugs: Cartesian products, NULL pitfall in NOT IN, integer division, TIMESTAMP truncation, and window framing bugs with progressive hints.
+          </p>
+        </div>
+        <a href="../sql-practice/debugging/broken-queries.sql" class="btn btn-secondary">Start Debugging &rarr;</a>
+      </div>
+
+      <!-- Module 5: UI/UX Change Practice -->
+      <div class="card portal-card card-teal">
+        <div>
+          <div class="card-icon">🎨</div>
+          <h2 class="card-heading">UI Practice (20 Guided + 5 Solo)</h2>
+          <p class="card-desc">
+            20 step-by-step guided frontend modifications and 5 unseen solo challenges covering responsive CSS Grid, accessible modals, table sorting, live search, and debounce handlers.
+          </p>
+        </div>
+        <a href="../ui-practice/guided/20-guided-modifications.md" class="btn btn-secondary">Review UI Exercises &rarr;</a>
+      </div>
+
+      <!-- Module 6: Assessment & Mock Interview -->
+      <div id="assessment" class="card portal-card card-rose">
+        <div>
+          <div class="card-icon">⏱️</div>
+          <h2 class="card-heading">Mock Assessment & Viva</h2>
+          <p class="card-desc">
+            Official 120-minute timed mock test (100 Marks: 40 SQL, 25 Adv SQL, 25 UI/UX, 10 Debugging) plus a 30-minute structured technical interview defense guide.
+          </p>
+        </div>
+        <a href="../assessment/offline-test/test-paper.md" class="btn btn-secondary">View Test Paper &rarr;</a>
+      </div>
+
+    </div>
+
+    <!-- Quick Architecture Overview -->
+    <section class="card" style="padding:2rem;">
+      <h2 style="font-size:1.35rem; font-weight:700; color:var(--primary-color); margin-bottom:0.75rem;">System Architecture & Engineering Standards</h2>
+      <p style="color:var(--text-muted); line-height:1.6; margin-bottom:1.5rem;">
+        This platform avoids unnecessary frameworks (no React, Next.js, TypeScript, Prisma, or ORMs) to ensure you understand every layer of software engineering. Every SQL query, API controller, and DOM event listener is fully readable, auditable, and defendable in technical assessments.
+      </p>
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.25rem;">
+        <div style="background:var(--bg-muted); padding:1rem; border-radius:var(--radius-sm);">
+          <strong style="color:var(--primary-color);">Data Layer:</strong><br/>
+          <span style="font-size:0.875rem; color:var(--text-muted);">9 PostgreSQL tables with explicit foreign keys, check constraints, domain indexes, and Neon Cloud SSL pooling.</span>
+        </div>
+        <div style="background:var(--bg-muted); padding:1rem; border-radius:var(--radius-sm);">
+          <strong style="color:var(--primary-color);">API Layer:</strong><br/>
+          <span style="font-size:0.875rem; color:var(--text-muted);">Express.js REST controllers with parameterization to eliminate SQL injection and standardized error payloads.</span>
+        </div>
+        <div style="background:var(--bg-muted); padding:1rem; border-radius:var(--radius-sm);">
+          <strong style="color:var(--primary-color);">UI Tier:</strong><br/>
+          <span style="font-size:0.875rem; color:var(--text-muted);">Pure HTML5 semantic elements, responsive CSS3 Grid & Variables, Vanilla JS ES6+ fetch controllers, and Chart.js.</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Financial Loan Management System &bull; AIWIZE 7-Day SQL + UI/UX Technical Curriculum</p>
+  </footer>
+
+</body>
+</html>
+

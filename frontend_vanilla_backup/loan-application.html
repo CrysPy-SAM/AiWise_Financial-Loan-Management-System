@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Application Form | Financial Loan Management System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+
+  <!-- Sticky Header Navigation -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">₹</div>
+      <span>FinLoan Pro</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="loan-application.html" class="nav-link active">Loan Application</a></li>
+        <li><a href="dashboard.html" class="nav-link">Financial Dashboard</a></li>
+        <li><a href="index.html#sql-practice" class="nav-link">SQL Practice</a></li>
+        <li><a href="index.html#assessment" class="nav-link">Assessment</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-container">
+
+    <div class="page-header">
+      <h1 class="page-title">Digital Loan Application</h1>
+      <p class="page-subtitle">Submit retail and commercial credit requests with instant CIBIL scoring & live reducing-balance EMI appraisal.</p>
+    </div>
+
+    <!-- Alert Container for Dynamic Feedback -->
+    <div id="alertContainer"></div>
+
+    <!-- Two-Column Grid: Form + Sticky EMI Calculator -->
+    <div class="form-layout-grid">
+
+      <!-- Left Column: Application Form -->
+      <section class="card form-card">
+        <form id="loanAppForm" novalidate>
+
+          <!-- Group 1: Personal & KYC Details -->
+          <fieldset class="fieldset-group">
+            <legend class="legend-title">1. Applicant Identity & KYC</legend>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="firstName">First Name <span class="required">*</span></label>
+                <input type="text" id="firstName" class="form-control" placeholder="e.g. Vikram" required>
+                <span class="error-message">First name is required.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="lastName">Last Name <span class="required">*</span></label>
+                <input type="text" id="lastName" class="form-control" placeholder="e.g. Sharma" required>
+                <span class="error-message">Last name is required.</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="emailInput">Email Address <span class="required">*</span></label>
+                <input type="email" id="emailInput" class="form-control" placeholder="vikram.sharma@example.com" required>
+                <span class="error-message">Valid email is required.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phoneInput">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="phoneInput" class="form-control" placeholder="+91-9820011223" required>
+                <span class="error-message">Contact phone is required.</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="panInput">PAN Number (Permanent Account Number) <span class="required">*</span></label>
+                <input type="text" id="panInput" class="form-control" placeholder="ABCDE1234F" maxlength="10" style="text-transform:uppercase; font-family:monospace;" required>
+                <span class="field-hint">Format: 5 letters, 4 digits, 1 letter (e.g. ABCDE1234F)</span>
+                <span class="error-message">Invalid PAN format.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="dobInput">Date of Birth <span class="required">*</span></label>
+                <input type="date" id="dobInput" class="form-control" value="1992-06-15" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="genderSelect">Gender</label>
+                <select id="genderSelect" class="form-control">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="addressInput">Residential Address</label>
+                <input type="text" id="addressInput" class="form-control" placeholder="Flat, Street, Landmark" value="14 Fort Business Hub, MG Road">
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Group 2: Financial & Credit Profile -->
+          <fieldset class="fieldset-group">
+            <legend class="legend-title">2. Employment & Credit Profile</legend>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="employmentSelect">Employment Type <span class="required">*</span></label>
+                <select id="employmentSelect" class="form-control" required>
+                  <option value="Salaried">Salaried (Corporate / Govt)</option>
+                  <option value="Self-Employed">Self-Employed Professional</option>
+                  <option value="Business Owner">Business Owner / MSME</option>
+                  <option value="Retired">Retired / Pensioner</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="incomeInput">Net Monthly Income (₹) <span class="required">*</span></label>
+                <input type="number" id="incomeInput" class="form-control" placeholder="e.g. 85000" min="10000" value="95000" required>
+                <span class="field-hint">Used to evaluate Debt-to-Income (DTI) ratio</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="cibilInput">CIBIL / Credit Score (300 - 900) <span class="required">*</span></label>
+                <input type="number" id="cibilInput" class="form-control" placeholder="750" min="300" max="900" value="760" required>
+                <span class="field-hint">Score determines interest eligibility</span>
+                <span class="error-message">Must be between 300 and 900.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cityInput">Residential City <span class="required">*</span></label>
+                <input type="text" id="cityInput" class="form-control" placeholder="e.g. Mumbai" value="Mumbai" required>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Group 3: Loan Product & Configuration -->
+          <fieldset class="fieldset-group">
+            <legend class="legend-title">3. Loan Requirement & Configuration</legend>
+
+            <div class="form-row" style="margin-bottom:1.25rem;">
+              <div class="form-group">
+                <label class="form-label" for="branchSelect">Originating Bank Branch <span class="required">*</span></label>
+                <select id="branchSelect" class="form-control" required>
+                  <option value="1">Loading branches...</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="policySelect">Select Loan Product <span class="required">*</span></label>
+                <select id="policySelect" class="form-control" required>
+                  <option value="">Loading credit policies...</option>
+                </select>
+                <span id="rateHint" class="field-hint" style="color:var(--brand-blue); font-weight:600;">Base Rate: 10.5% p.a.</span>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom:1.25rem;">
+              <label class="form-label" for="purposeInput">Loan Purpose</label>
+              <input type="text" id="purposeInput" class="form-control" placeholder="e.g. Home purchase, higher education, medical expenses" value="Home renovation and interior setup">
+            </div>
+
+            <!-- Conditional Product Fields injected dynamically -->
+            <div id="conditionalFields"></div>
+
+            <!-- Loan Amount Slider + Input -->
+            <div class="form-group slider-group" style="margin-bottom:1.5rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <label class="form-label" for="amountInput">Loan Amount Required (₹) <span class="required">*</span></label>
+                <span style="font-size:0.8rem; color:var(--text-muted);">Range: ₹10k - ₹3 Cr</span>
+              </div>
+              <div class="slider-input-wrapper">
+                <input type="range" id="amountSlider" class="range-slider" min="50000" max="5000000" step="10000" value="500000">
+                <input type="number" id="amountInput" class="form-control" style="width:140px; font-weight:700;" min="10000" value="500000">
+              </div>
+            </div>
+
+            <!-- Tenure Slider + Input -->
+            <div class="form-group slider-group">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <label class="form-label" for="tenureInput">Loan Tenure (Months) <span class="required">*</span></label>
+                <span style="font-size:0.8rem; color:var(--text-muted);">Range: 6 - 360 Months</span>
+              </div>
+              <div class="slider-input-wrapper">
+                <input type="range" id="tenureSlider" class="range-slider" min="12" max="120" step="6" value="36">
+                <input type="number" id="tenureInput" class="form-control" style="width:100px; font-weight:700;" min="6" max="360" value="36">
+              </div>
+            </div>
+          </fieldset>
+
+          <button type="submit" id="submitBtn" class="btn btn-primary" style="width:100%; padding:0.85rem; font-size:1.05rem;">
+            Review & Submit Application
+          </button>
+        </form>
+      </section>
+
+      <!-- Right Column: Real-Time EMI Preview Calculator -->
+      <aside class="card calculator-card">
+        <div class="calc-header">
+          <h2 style="font-size:1.15rem; font-weight:700; color:var(--primary-color);">Real-Time EMI Appraisal</h2>
+          <p style="font-size:0.825rem; color:var(--text-muted);">Live reducing balance math engine</p>
+        </div>
+
+        <div class="emi-display-box">
+          <div class="emi-label">Monthly EMI Payable</div>
+          <div id="emiDisplay" class="emi-value">₹16,251</div>
+          <div class="emi-formula-hint">Formula: P × r × (1+r)ⁿ / ((1+r)ⁿ - 1)</div>
+        </div>
+
+        <div class="calc-breakdown-list">
+          <div class="breakdown-row">
+            <span class="breakdown-label">Principal Amount:</span>
+            <span id="principalDisplay" class="breakdown-value">₹5,00,000</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-label">Total Interest Charges:</span>
+            <span id="interestDisplay" class="breakdown-value" style="color:var(--brand-blue);">₹85,044</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-label">Total Amount Payable:</span>
+            <span id="totalPayableDisplay" class="breakdown-value">₹5,85,044</span>
+          </div>
+        </div>
+
+        <!-- Debt-to-Income Indicator -->
+        <div id="dtiBox" class="dti-gauge-box dti-safe">
+          <div id="dtiText">
+            <strong>DTI Ratio: 17.1% (Safe)</strong><br/>
+            Projected EMI is well within recommended 50% income threshold.
+          </div>
+        </div>
+
+        <div style="background-color: var(--bg-muted); padding: 0.85rem; border-radius: var(--radius-sm); font-size: 0.775rem; color: var(--text-muted); line-height: 1.4;">
+          <strong>Financial Guidance:</strong> The EMI is amortized monthly on the remaining principal balance. Early prepayments reduce interest burden.
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Application History Section -->
+    <section class="history-section">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <div>
+          <h2 style="font-size:1.25rem; font-weight:700; color:var(--primary-color);">Recent Loan Applications</h2>
+          <p style="font-size:0.85rem; color:var(--text-muted);">Live database view of submitted credit applications</p>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>App ID</th>
+              <th>Applicant & PAN</th>
+              <th>Loan Product</th>
+              <th>Requested Amount</th>
+              <th>Tenure</th>
+              <th>Status</th>
+              <th>Application Date</th>
+            </tr>
+          </thead>
+          <tbody id="applicationsTableBody">
+            <tr>
+              <td colspan="7" style="text-align:center; padding: 2rem; color: var(--text-muted);">
+                Loading application records from PostgreSQL...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Review & Confirmation Accessible Modal -->
+  <div id="confirmModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle" class="modal-title">Review Application Details</h3>
+        <button id="modalCloseBtn" class="modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="margin-bottom:1rem; color:var(--text-muted);">
+          Please confirm the loan terms below before final underwriting and database persistence:
+        </p>
+        <div id="modalSummaryList" class="calc-breakdown-list"></div>
+      </div>
+      <div class="modal-footer">
+        <button id="modalCancelBtn" class="btn btn-secondary">Modify Inputs</button>
+        <button id="modalConfirmBtn" class="btn btn-primary">Confirm & Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Financial Loan Management System &bull; AIWIZE 7-Day SQL + UI/UX Technical Curriculum</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/emi-calculator.js"></script>
+  <script src="js/loan-application.js"></script>
+</body>
+</html>
