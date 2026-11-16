@@ -4,7 +4,7 @@
 [![Node.js](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL%20%2F%20Neon%20Cloud-336791?logo=postgresql&logoColor=white)](https://neon.tech/)
 [![Chart.js](https://img.shields.io/badge/Analytics-Chart.js-FF6384?logo=chartdotjs&logoColor=white)](https://www.chartjs.org/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 
 **FinLoan Pro** is an institutional-grade, full-stack Banking & Loan Management System engineered on **Neon Cloud PostgreSQL**, **Node.js + Express**, and a modern **React.js 18 + Vite** single-page application (SPA).
 
